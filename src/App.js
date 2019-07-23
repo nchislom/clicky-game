@@ -35,7 +35,7 @@ class App extends Component {
     this.state.friends = shuffleArray(this.state.friends);
     return (
       <Wrapper>
-        <Title>Friends List</Title>
+        <Title>Clicky Game</Title>
         {this.state.friends.map(friend => (
           <FriendCard
             removeFriend={this.removeFriend}

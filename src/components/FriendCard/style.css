@@ -10,7 +10,8 @@
 }
 
 .card > .img-container {
-  height: 60%;
+  padding-top: 15%;
+  height: 100%;
   overflow: hidden;
   text-align: center;
   background:#6CADDC;

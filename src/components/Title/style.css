@@ -1,8 +1,16 @@
 .title {
   width: 100%;
+  font-style: italic;
   text-align: center;
   font-size: 3rem;
-  text-decoration: underline;
-  color: #2A77AE;
+  /* text-decoration: underline; */
+  /* color: #2A77AE; */
+  color: darkorange;
   margin-bottom: 50px;
+  padding: 2%;
+  position: fixed;
+  top: 0;
+  z-index: 5000;
+  background-color: white;
+  box-shadow: 10px 10px 5px grey;
 }
