@@ -4,7 +4,10 @@ import Wrapper from "./components/Wrapper";
 import Title from "./components/Title";
 import friends from "./friends.json";
 
-// Ref: https://stackoverflow.com/questions/38101522/how-to-render-random-objects-from-an-array-in-react
+let currentScore = 0;
+let highestScore = 0;
+
+// Function used to take array of cards, shuffle, and return altered array
 function shuffleArray(array) {
   let i = array.length - 1;
   for (; i > 0; i--) {
@@ -22,7 +25,7 @@ class App extends Component {
     friends
   };
 
-  removeFriend = id => {
+  showFriend = id => {
     // Filter this.state.friends for friends with an id not equal to the id being removed
     const friends = this.state.friends.filter(friend => friend.id !== id);
 
@@ -38,7 +41,7 @@ class App extends Component {
         <Title>Clicky Game</Title>
         {this.state.friends.map(friend => (
           <FriendCard
-            removeFriend={this.removeFriend}
+            showFriend={this.showFriend}
             id={friend.id}
             key={friend.id}
             name={friend.name}
