@@ -3,6 +3,7 @@ import FriendCard from "./components/FriendCard";
 import Wrapper from "./components/Wrapper";
 import Title from "./components/Title";
 import friends from "./friends.json";
+import ScoreBoard from "./components/ScoreBoard";
 
 let currentScore = 0;
 let highestScore = 0;
@@ -27,16 +28,16 @@ class App extends Component {
   };
 
   clickCard = id => {
-    console.log('Card id: ' + id);
-    console.log(guessedCards);
     if(guessedCards.includes(id)){
-      console.log('You Lose!');
+      if(currentScore > highestScore){
+        highestScore = currentScore;
+      }
+      currentScore = 0;
+      guessedCards = [];
+      this.setState({ friends });
     } else {
       guessedCards.push(id);
-      // Filter this.state.friends for friends with an id not equal to the id being removed
-      // const friends = this.state.friends.filter(friend => friend.id !== id);
-  
-      // Set this.state.friends equal to the new friends array
+      currentScore++;
       this.setState({ friends });
     }
   };
@@ -46,7 +47,12 @@ class App extends Component {
     this.state.friends = shuffleArray(this.state.friends);
     return (
       <Wrapper>
-        <Title>Clicky Game</Title>
+        <Title>Clicky Game
+        <ScoreBoard
+          current={currentScore}
+          high={highestScore}
+        />
+        </Title>
         {this.state.friends.map(friend => (
           <FriendCard
             clickCard={this.clickCard}
