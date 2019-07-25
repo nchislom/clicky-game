@@ -8,7 +8,7 @@
   color: darkorange;
   margin-bottom: 50px;
   padding: 2%;
-  position: fixed;
+  position: static;
   top: 0;
   z-index: 5000;
   background-color: white;
