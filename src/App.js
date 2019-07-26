@@ -8,6 +8,7 @@ import ScoreBoard from "./components/ScoreBoard";
 let currentScore = 0;
 let highestScore = 0;
 let guessedCards = [];
+let gameOver = false;
 
 // Function used to take array of cards, shuffle, and return altered array
 function shuffleArray(array) {
@@ -30,8 +31,10 @@ class App extends Component {
   clickCard = id => {
     if(guessedCards.includes(id)){
       if(currentScore > highestScore){
+        gameOver = true;
         highestScore = currentScore;
       }
+      gameOver = false;
       currentScore = 0;
       guessedCards = [];
       this.setState({ friends });
@@ -48,10 +51,12 @@ class App extends Component {
     return (
       <Wrapper>
         <Title>Clicky Game
-        <ScoreBoard
-          current={currentScore}
-          high={highestScore}
-        />
+          {gameOver ? ('You Suck!') : (
+            <ScoreBoard
+              current={currentScore}
+              high={highestScore}
+            />
+          )}
         </Title>
         {this.state.friends.map(friend => (
           <FriendCard
